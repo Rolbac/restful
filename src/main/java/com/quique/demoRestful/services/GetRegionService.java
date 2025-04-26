@@ -2,6 +2,7 @@ package com.quique.demoRestful.services;
 
 import com.quique.demoRestful.data.RegionDTO;
 import com.quique.demoRestful.entities.Region;
+import com.quique.demoRestful.exceptions.RegionNotFoundException;
 import com.quique.demoRestful.repositories.RegionRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,6 @@ public class GetRegionService implements Query<Integer, RegionDTO>{
             return ResponseEntity.ok(new RegionDTO(regionOptional.get()));
         }
 
-        return null;
+        throw new RegionNotFoundException();
     }
 }

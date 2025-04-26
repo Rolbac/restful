@@ -3,6 +3,7 @@ package com.quique.demoRestful.services;
 import com.quique.demoRestful.data.RegionDTO;
 import com.quique.demoRestful.data.UpdateRegionCommand;
 import com.quique.demoRestful.entities.Region;
+import com.quique.demoRestful.exceptions.RegionNotFoundException;
 import com.quique.demoRestful.repositories.RegionRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,6 @@ public class EditRegionService implements Command<UpdateRegionCommand, RegionDTO
             return ResponseEntity.ok(new RegionDTO(region));
         }
 
-        return null;
+        throw new RegionNotFoundException();
     }
 }

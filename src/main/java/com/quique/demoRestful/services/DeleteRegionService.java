@@ -1,6 +1,7 @@
 package com.quique.demoRestful.services;
 
 import com.quique.demoRestful.entities.Region;
+import com.quique.demoRestful.exceptions.RegionNotFoundException;
 import com.quique.demoRestful.repositories.RegionRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,6 @@ public class DeleteRegionService implements Command<Integer, Void>{
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        return null;
+        throw new RegionNotFoundException();
     }
 }
